@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -42,7 +42,7 @@ function timeAgo(date: string) {
   return `${Math.floor(days / 30)} months ago`;
 }
 
-export default function JobsPage() {
+function JobsPage() {
   const searchParams = useSearchParams();
   const [jobs, setJobs] = useState<Job[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -245,7 +245,6 @@ export default function JobsPage() {
                     <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md hover:border-blue-100 transition-all duration-200 cursor-pointer">
                       <div className="flex items-start justify-between gap-4">
                         <div className="flex items-start gap-4">
-                          {/* Company Logo */}
                           <div className="w-12 h-12 bg-gray-100 rounded-xl flex items-center justify-center shrink-0">
                             {job.company?.logo ? (
                               <img src={job.company.logo} alt={job.company.name} className="w-full h-full object-cover rounded-xl" />
@@ -314,7 +313,6 @@ export default function JobsPage() {
               </div>
             )}
 
-            {/* Pagination */}
             {totalPages > 1 && (
               <div className="flex items-center justify-center gap-2 mt-8">
                 <button
@@ -340,5 +338,13 @@ export default function JobsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <JobsPage />
+    </Suspense>
   );
 }
