@@ -16,7 +16,6 @@ export default function ProfilePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSaving, setIsSaving] = useState(false);
   const [newSkill, setNewSkill] = useState('');
-
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -29,15 +28,11 @@ export default function ProfilePage() {
   });
 
   useEffect(() => {
-    if (!authLoading && !isAuthenticated) {
-      router.push('/login');
-    }
+    if (!authLoading && !isAuthenticated) router.push('/login');
   }, [isAuthenticated, authLoading]);
 
   useEffect(() => {
-    if (isAuthenticated) {
-      fetchProfile();
-    }
+    if (isAuthenticated) fetchProfile();
   }, [isAuthenticated]);
 
   const fetchProfile = async () => {
@@ -62,9 +57,7 @@ export default function ProfilePage() {
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -95,48 +88,56 @@ export default function ProfilePage() {
   if (authLoading || isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 pt-16 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-purple-700" />
       </div>
     );
   }
 
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
-      <div className="max-w-3xl mx-auto px-4 py-8">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">My Profile</h1>
-          <p className="text-gray-500 mt-1">Keep your profile updated to get better job matches</p>
+      {/* Header */}
+      <div className="bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 px-4 py-10">
+        <div className="max-w-3xl mx-auto">
+          <div className="flex items-center gap-4">
+            <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+              <span className="text-white font-bold text-2xl">
+                {user?.firstName?.[0]}{user?.lastName?.[0]}
+              </span>
+            </div>
+            <div>
+              <h1 className="text-2xl font-bold text-white">{user?.firstName} {user?.lastName}</h1>
+              <p className="text-purple-200">{user?.email}</p>
+            </div>
+          </div>
         </div>
+      </div>
 
+      <div className="max-w-3xl mx-auto px-4 py-8">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Personal Info */}
           <div className="bg-white rounded-xl border border-gray-100 p-6">
-            <h2 className="font-semibold text-gray-900 mb-5 flex items-center gap-2">
-              <User className="w-5 h-5 text-blue-600" /> Personal Information
+            <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
+              <User className="w-5 h-5 text-purple-700" /> Personal Information
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  First Name
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">First Name</label>
                 <input
                   type="text"
                   name="firstName"
                   value={formData.firstName}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Last Name
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Last Name</label>
                 <input
                   type="text"
                   name="lastName"
                   value={formData.lastName}
                   onChange={handleChange}
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900"
                 />
               </div>
               <div>
@@ -147,7 +148,7 @@ export default function ProfilePage() {
                   type="email"
                   value={user?.email || ''}
                   disabled
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 bg-gray-50 text-gray-400 cursor-not-allowed"
                 />
               </div>
               <div>
@@ -160,7 +161,7 @@ export default function ProfilePage() {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="+234 800 000 0000"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900"
                 />
               </div>
               <div className="md:col-span-2">
@@ -173,7 +174,7 @@ export default function ProfilePage() {
                   value={formData.location}
                   onChange={handleChange}
                   placeholder="Lagos, Nigeria"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900"
                 />
               </div>
             </div>
@@ -181,22 +182,22 @@ export default function ProfilePage() {
 
           {/* Bio */}
           <div className="bg-white rounded-xl border border-gray-100 p-6">
-            <h2 className="font-semibold text-gray-900 mb-5 flex items-center gap-2">
-              <Briefcase className="w-5 h-5 text-blue-600" /> Professional Summary
+            <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
+              <Briefcase className="w-5 h-5 text-purple-700" /> Professional Summary
             </h2>
             <textarea
               name="bio"
               value={formData.bio}
               onChange={handleChange}
-              placeholder="Tell employers about yourself, your experience and what you're looking for..."
+              placeholder="Tell employers about yourself..."
               rows={5}
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400 resize-none"
+              className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400 resize-none"
             />
           </div>
 
           {/* Skills */}
           <div className="bg-white rounded-xl border border-gray-100 p-6">
-            <h2 className="font-semibold text-gray-900 mb-5">Skills</h2>
+            <h2 className="font-bold text-gray-900 mb-5">Skills</h2>
             <div className="flex gap-2 mb-4">
               <input
                 type="text"
@@ -204,68 +205,55 @@ export default function ProfilePage() {
                 onChange={(e) => setNewSkill(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddSkill())}
                 placeholder="Add a skill (e.g. React, Python...)"
-                className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400"
+                className="flex-1 px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400"
               />
               <button
                 type="button"
                 onClick={handleAddSkill}
-                className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg transition-colors inline-flex items-center gap-1"
+                className="bg-purple-700 hover:bg-purple-800 text-white px-4 py-2.5 rounded-xl transition-colors inline-flex items-center gap-1"
               >
                 <Plus className="w-4 h-4" /> Add
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
               {formData.skills.map((skill) => (
-                <span
-                  key={skill}
-                  className="inline-flex items-center gap-1.5 bg-blue-50 text-blue-700 px-3 py-1.5 rounded-lg text-sm font-medium"
-                >
+                <span key={skill} className="inline-flex items-center gap-1.5 bg-purple-50 text-purple-700 px-3 py-1.5 rounded-lg text-sm font-medium border border-purple-100">
                   {skill}
-                  <button
-                    type="button"
-                    onClick={() => handleRemoveSkill(skill)}
-                    className="hover:text-blue-900 transition-colors"
-                  >
+                  <button type="button" onClick={() => handleRemoveSkill(skill)} className="hover:text-purple-900">
                     <X className="w-3.5 h-3.5" />
                   </button>
                 </span>
               ))}
-              {formData.skills.length === 0 && (
-                <p className="text-gray-400 text-sm">No skills added yet</p>
-              )}
+              {formData.skills.length === 0 && <p className="text-gray-400 text-sm">No skills added yet</p>}
             </div>
           </div>
 
           {/* Links */}
           <div className="bg-white rounded-xl border border-gray-100 p-6">
-            <h2 className="font-semibold text-gray-900 mb-5 flex items-center gap-2">
-              <Link className="w-5 h-5 text-blue-600" /> Links
+            <h2 className="font-bold text-gray-900 mb-5 flex items-center gap-2">
+              <Link className="w-5 h-5 text-purple-700" /> Links
             </h2>
             <div className="space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  Resume URL
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">Resume URL</label>
                 <input
                   type="url"
                   name="resumeUrl"
                   value={formData.resumeUrl}
                   onChange={handleChange}
                   placeholder="https://drive.google.com/your-resume"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400"
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  LinkedIn URL
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">LinkedIn URL</label>
                 <input
                   type="url"
                   name="linkedinUrl"
                   value={formData.linkedinUrl}
                   onChange={handleChange}
                   placeholder="https://linkedin.com/in/yourname"
-                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400"
+                  className="w-full px-4 py-2.5 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all text-gray-900 placeholder-gray-400"
                 />
               </div>
             </div>
@@ -275,13 +263,9 @@ export default function ProfilePage() {
           <button
             type="submit"
             disabled={isSaving}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-semibold py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50"
           >
-            {isSaving ? (
-              <><Loader2 className="w-4 h-4 animate-spin" /> Saving...</>
-            ) : (
-              <><Save className="w-4 h-4" /> Save Profile</>
-            )}
+            {isSaving ? <><Loader2 className="w-4 h-4 animate-spin" /> Saving...</> : <><Save className="w-4 h-4" /> Save Profile</>}
           </button>
         </form>
       </div>

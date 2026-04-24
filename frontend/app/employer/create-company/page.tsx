@@ -71,7 +71,7 @@ export default function CreateCompanyPage() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-gray-50 pt-16 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-purple-700" />
       </div>
     );
   }
@@ -271,7 +271,7 @@ export default function CreateCompanyPage() {
           <button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full bg-purple-700 hover:bg-purple-800 text-white font-medium py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50"
           >
             {isLoading ? (
               <><Loader2 className="w-4 h-4 animate-spin" /> Creating Company...</>

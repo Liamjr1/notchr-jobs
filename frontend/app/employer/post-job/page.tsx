@@ -143,7 +143,7 @@ export default function PostJobPage() {
   if (authLoading) {
     return (
       <div className="min-h-screen bg-gray-50 pt-16 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-purple-700" />
       </div>
     );
   }
@@ -170,7 +170,7 @@ export default function PostJobPage() {
             <p className="text-gray-500 mb-6">You need to create a company before posting jobs</p>
             <Link
               href="/employer/create-company"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-lg transition-colors inline-flex items-center gap-2"
+              className="bg-blue-600 hover:bg-purple-800 text-white font-medium px-6 py-2.5 rounded-lg transition-colors inline-flex items-center gap-2"
             >
               <Plus className="w-4 h-4" /> Create Company
             </Link>
@@ -190,7 +190,7 @@ export default function PostJobPage() {
                     onChange={handleChange}
                     placeholder="e.g. Senior Frontend Developer"
                     required
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   />
                 </div>
 
@@ -200,7 +200,7 @@ export default function PostJobPage() {
                     name="companyId"
                     value={formData.companyId}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   >
                     {companies.map(c => (
                       <option key={c._id} value={c._id}>{c.name}</option>
@@ -216,7 +216,7 @@ export default function PostJobPage() {
                       value={formData.category}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                     >
                       <option value="">Select category</option>
                       {categories.map(c => (
@@ -230,7 +230,7 @@ export default function PostJobPage() {
                       name="jobType"
                       value={formData.jobType}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                     >
                       <option value="full-time">Full Time</option>
                       <option value="part-time">Part Time</option>
@@ -249,7 +249,7 @@ export default function PostJobPage() {
                       name="experienceLevel"
                       value={formData.experienceLevel}
                       onChange={handleChange}
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                     >
                       <option value="entry">Entry Level</option>
                       <option value="mid">Mid Level</option>
@@ -267,7 +267,7 @@ export default function PostJobPage() {
                       onChange={handleChange}
                       placeholder="Lagos, Nigeria"
                       required
-                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                      className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                     />
                   </div>
                 </div>
@@ -278,7 +278,7 @@ export default function PostJobPage() {
                     name="isRemote"
                     checked={formData.isRemote}
                     onChange={handleChange}
-                    className="w-4 h-4 text-blue-600"
+                    className="w-4 h-4 text-purple-700"
                   />
                   <span className="text-sm text-gray-700">This is a remote position</span>
                 </label>
@@ -295,7 +295,7 @@ export default function PostJobPage() {
                 placeholder="Describe the role, what the team does, and what makes this opportunity exciting..."
                 rows={6}
                 required
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 placeholder-gray-400 resize-none"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900 placeholder-gray-400 resize-none"
               />
             </div>
 
@@ -309,10 +309,10 @@ export default function PostJobPage() {
                   onChange={(e) => setNewSkill(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem('skills', newSkill, setNewSkill))}
                   placeholder="Add a skill..."
-                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                 />
                 <button type="button" onClick={() => addItem('skills', newSkill, setNewSkill)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg transition-colors">
+                  className="bg-blue-600 hover:bg-purple-800 text-white px-4 py-2.5 rounded-lg transition-colors">
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
@@ -338,10 +338,10 @@ export default function PostJobPage() {
                   onChange={(e) => setNewRequirement(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem('requirements', newRequirement, setNewRequirement))}
                   placeholder="Add a requirement..."
-                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                 />
                 <button type="button" onClick={() => addItem('requirements', newRequirement, setNewRequirement)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg transition-colors">
+                  className="bg-blue-600 hover:bg-purple-800 text-white px-4 py-2.5 rounded-lg transition-colors">
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
@@ -367,10 +367,10 @@ export default function PostJobPage() {
                   onChange={(e) => setNewResponsibility(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem('responsibilities', newResponsibility, setNewResponsibility))}
                   placeholder="Add a responsibility..."
-                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                 />
                 <button type="button" onClick={() => addItem('responsibilities', newResponsibility, setNewResponsibility)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg transition-colors">
+                  className="bg-blue-600 hover:bg-purple-800 text-white px-4 py-2.5 rounded-lg transition-colors">
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
@@ -396,10 +396,10 @@ export default function PostJobPage() {
                   onChange={(e) => setNewBenefit(e.target.value)}
                   onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addItem('benefits', newBenefit, setNewBenefit))}
                   placeholder="Add a benefit..."
-                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                  className="flex-1 px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                 />
                 <button type="button" onClick={() => addItem('benefits', newBenefit, setNewBenefit)}
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-lg transition-colors">
+                  className="bg-blue-600 hover:bg-purple-800 text-white px-4 py-2.5 rounded-lg transition-colors">
                   <Plus className="w-4 h-4" />
                 </button>
               </div>
@@ -427,7 +427,7 @@ export default function PostJobPage() {
                     value={formData.salaryMin}
                     onChange={handleChange}
                     placeholder="200000"
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   />
                 </div>
                 <div>
@@ -438,7 +438,7 @@ export default function PostJobPage() {
                     value={formData.salaryMax}
                     onChange={handleChange}
                     placeholder="500000"
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   />
                 </div>
               </div>
@@ -449,7 +449,7 @@ export default function PostJobPage() {
                     name="period"
                     value={formData.period}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   >
                     <option value="monthly">Monthly</option>
                     <option value="annual">Annual</option>
@@ -461,7 +461,7 @@ export default function PostJobPage() {
                     name="currency"
                     value={formData.currency}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   >
                     <option value="NGN">NGN (₦)</option>
                     <option value="USD">USD ($)</option>
@@ -474,7 +474,7 @@ export default function PostJobPage() {
                   name="isNegotiable"
                   checked={formData.isNegotiable}
                   onChange={handleChange}
-                  className="w-4 h-4 text-blue-600"
+                  className="w-4 h-4 text-purple-700"
                 />
                 <span className="text-sm text-gray-700">Salary is negotiable</span>
               </label>
@@ -491,7 +491,7 @@ export default function PostJobPage() {
                     name="deadline"
                     value={formData.deadline}
                     onChange={handleChange}
-                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900"
+                    className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-500 text-gray-900"
                   />
                 </div>
                 <label className="flex items-center gap-2 cursor-pointer">
@@ -500,7 +500,7 @@ export default function PostJobPage() {
                     name="urgent"
                     checked={formData.urgent}
                     onChange={handleChange}
-                    className="w-4 h-4 text-blue-600"
+                    className="w-4 h-4 text-purple-700"
                   />
                   <span className="text-sm text-gray-700">Mark as Urgent</span>
                 </label>
@@ -510,7 +510,7 @@ export default function PostJobPage() {
                     name="featured"
                     checked={formData.featured}
                     onChange={handleChange}
-                    className="w-4 h-4 text-blue-600"
+                    className="w-4 h-4 text-purple-700"
                   />
                   <span className="text-sm text-gray-700">Feature this job</span>
                 </label>
@@ -521,7 +521,7 @@ export default function PostJobPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50"
+              className="w-full bg-blue-600 hover:bg-purple-800 text-white font-medium py-3 rounded-xl transition-colors inline-flex items-center justify-center gap-2 disabled:opacity-50"
             >
               {isLoading ? (
                 <><Loader2 className="w-4 h-4 animate-spin" /> Posting Job...</>

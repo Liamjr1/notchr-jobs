@@ -27,21 +27,9 @@ const stats = [
 ];
 
 const features = [
-  {
-    icon: Zap,
-    title: 'Quick Apply',
-    description: 'Apply to multiple jobs with one click using your saved profile.',
-  },
-  {
-    icon: Shield,
-    title: 'Verified Companies',
-    description: 'All companies are verified so you only apply to legitimate employers.',
-  },
-  {
-    icon: TrendingUp,
-    title: 'Track Applications',
-    description: 'Monitor the status of all your applications in one dashboard.',
-  },
+  { icon: Zap, title: 'Quick Apply', description: 'Apply to multiple jobs with one click using your saved profile.' },
+  { icon: Shield, title: 'Verified Companies', description: 'All companies are verified so you only apply to legitimate employers.' },
+  { icon: TrendingUp, title: 'Track Applications', description: 'Monitor the status of all your applications in one dashboard.' },
 ];
 
 export default function HomePage() {
@@ -60,19 +48,19 @@ export default function HomePage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 pt-32 pb-20 px-4">
+      <section className="bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 pt-32 pb-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-blue-800/50 border border-blue-700 rounded-full px-4 py-1.5 mb-6">
+          <div className="inline-flex items-center gap-2 bg-purple-800/50 border border-purple-600 rounded-full px-4 py-1.5 mb-6">
             <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
-            <span className="text-blue-200 text-sm font-medium">2,400+ jobs available right now</span>
+            <span className="text-purple-200 text-sm font-medium">2,400+ jobs available right now</span>
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Find Your Dream Job
-            <span className="block text-blue-300 mt-2">in Nigeria</span>
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-4 leading-tight">
+            Don't Just Dream it,
+            <span className="block text-purple-300 mt-2">Do it.</span>
           </h1>
-
-          <p className="text-blue-200 text-xl mb-10 max-w-2xl mx-auto">
+          <p className="text-xl text-purple-200 mb-3 font-medium">Your Perfect Job Awaits</p>
+          <p className="text-purple-300 text-lg mb-10 max-w-2xl mx-auto">
             Connect with top companies across Nigeria. Your next career move starts here.
           </p>
 
@@ -99,7 +87,7 @@ export default function HomePage() {
                 className="flex-1 outline-none text-gray-900 placeholder-gray-400 bg-transparent py-2"
               />
             </div>
-            <button type="submit" className="btn-primary px-8 py-3 rounded-xl">
+            <button type="submit" className="bg-purple-700 hover:bg-purple-800 text-white font-medium px-8 py-3 rounded-xl transition-colors">
               Search Jobs
             </button>
           </form>
@@ -109,7 +97,7 @@ export default function HomePage() {
               <button
                 key={tag}
                 onClick={() => router.push(`/jobs?q=${tag}`)}
-                className="text-blue-200 hover:text-white text-sm border border-blue-700 hover:border-blue-500 rounded-full px-4 py-1.5 transition-colors"
+                className="text-purple-200 hover:text-white text-sm border border-purple-600 hover:border-purple-400 rounded-full px-4 py-1.5 transition-colors"
               >
                 {tag}
               </button>
@@ -125,8 +113,8 @@ export default function HomePage() {
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
                 <div className="flex justify-center mb-3">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                    <stat.icon className="w-6 h-6 text-blue-600" />
+                  <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center">
+                    <stat.icon className="w-6 h-6 text-purple-700" />
                   </div>
                 </div>
                 <div className="text-3xl font-bold text-gray-900 mb-1">{stat.value}</div>
@@ -149,12 +137,10 @@ export default function HomePage() {
               <Link
                 key={cat.name}
                 href={`/jobs?category=${cat.name}`}
-                className="card p-6 text-center group cursor-pointer hover:-translate-y-1 transition-all duration-200"
+                className="bg-white rounded-xl border border-gray-100 p-6 text-center group cursor-pointer hover:-translate-y-1 hover:shadow-md hover:border-purple-200 transition-all duration-200"
               >
                 <div className="text-4xl mb-3">{cat.icon}</div>
-                <div className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
-                  {cat.name}
-                </div>
+                <div className="font-semibold text-gray-900 group-hover:text-purple-700 transition-colors">{cat.name}</div>
                 <div className="text-gray-400 text-sm mt-1">{cat.count} jobs</div>
               </Link>
             ))}
@@ -172,8 +158,8 @@ export default function HomePage() {
           <div className="grid md:grid-cols-3 gap-8">
             {features.map((feature) => (
               <div key={feature.title} className="text-center p-8">
-                <div className="w-16 h-16 bg-blue-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                  <feature.icon className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-purple-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                  <feature.icon className="w-8 h-8 text-purple-700" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
                 <p className="text-gray-500 leading-relaxed">{feature.description}</p>
@@ -184,25 +170,23 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 px-4 bg-blue-600">
+      <section className="py-20 px-4 bg-purple-700">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">
-            Ready to Start Your Journey?
-          </h2>
-          <p className="text-blue-100 text-lg mb-8">
+          <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Your Journey?</h2>
+          <p className="text-purple-100 text-lg mb-8">
             Join thousands of professionals who found their dream jobs through NotcHR.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/register" className="bg-white text-blue-600 hover:bg-blue-50 font-semibold px-8 py-3 rounded-xl transition-colors inline-flex items-center gap-2 justify-center">
+            <Link href="/register" className="bg-white text-purple-700 hover:bg-purple-50 font-semibold px-8 py-3 rounded-xl transition-colors inline-flex items-center gap-2 justify-center">
               Get Started Free <ArrowRight className="w-4 h-4" />
             </Link>
-            <Link href="/jobs" className="border border-blue-400 text-white hover:bg-blue-700 font-semibold px-8 py-3 rounded-xl transition-colors inline-flex items-center gap-2 justify-center">
+            <Link href="/jobs" className="border border-purple-400 text-white hover:bg-purple-800 font-semibold px-8 py-3 rounded-xl transition-colors inline-flex items-center gap-2 justify-center">
               Browse Jobs
             </Link>
           </div>
           <div className="flex flex-wrap justify-center gap-6 mt-10">
             {['Free to use', 'No hidden fees', 'Verified employers', 'Quick apply'].map((item) => (
-              <div key={item} className="flex items-center gap-2 text-blue-100">
+              <div key={item} className="flex items-center gap-2 text-purple-100">
                 <CheckCircle className="w-4 h-4 text-green-400" />
                 <span className="text-sm">{item}</span>
               </div>
@@ -216,7 +200,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 bg-purple-700 rounded-lg flex items-center justify-center">
                 <Briefcase className="w-4 h-4 text-white" />
               </div>
               <span className="text-white font-bold text-xl">NotcHR Jobs</span>
@@ -227,9 +211,7 @@ export default function HomePage() {
               <Link href="/register" className="hover:text-white transition-colors">Sign Up</Link>
               <Link href="/login" className="hover:text-white transition-colors">Login</Link>
             </div>
-            <div className="text-sm">
-              © 2024 NotcHR Jobs. All rights reserved.
-            </div>
+            <div className="text-sm">© 2026 NotcHR Jobs. All rights reserved.</div>
           </div>
         </div>
       </footer>

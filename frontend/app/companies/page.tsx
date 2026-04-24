@@ -34,9 +34,7 @@ export default function CompaniesPage() {
     }
   };
 
-  useEffect(() => {
-    fetchCompanies();
-  }, [selectedIndustry]);
+  useEffect(() => { fetchCompanies(); }, [selectedIndustry]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -46,10 +44,10 @@ export default function CompaniesPage() {
   return (
     <div className="min-h-screen bg-gray-50 pt-16">
       {/* Header */}
-      <div className="bg-blue-900 py-12 px-4">
+      <div className="bg-gradient-to-br from-purple-900 via-purple-800 to-purple-700 py-12 px-4">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-white mb-2">Top Companies</h1>
-          <p className="text-blue-200 mb-6">Discover great places to work across Nigeria</p>
+          <p className="text-purple-200 mb-6">Discover great places to work across Nigeria</p>
           <form onSubmit={handleSearch} className="flex gap-3 max-w-xl">
             <div className="flex items-center gap-3 bg-white rounded-xl px-4 flex-1">
               <Search className="w-5 h-5 text-gray-400 shrink-0" />
@@ -61,10 +59,7 @@ export default function CompaniesPage() {
                 className="flex-1 py-3 outline-none text-gray-900 placeholder-gray-400 bg-transparent"
               />
             </div>
-            <button
-              type="submit"
-              className="bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-3 rounded-xl transition-colors"
-            >
+            <button type="submit" className="bg-white text-purple-700 hover:bg-purple-50 font-semibold px-6 py-3 rounded-xl transition-colors">
               Search
             </button>
           </form>
@@ -76,10 +71,10 @@ export default function CompaniesPage() {
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setSelectedIndustry('')}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+            className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
               selectedIndustry === ''
-                ? 'bg-blue-600 text-white'
-                : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-300'
+                ? 'bg-purple-700 text-white'
+                : 'bg-white text-gray-600 border border-gray-200 hover:border-purple-300 hover:text-purple-700'
             }`}
           >
             All Industries
@@ -88,10 +83,10 @@ export default function CompaniesPage() {
             <button
               key={ind}
               onClick={() => setSelectedIndustry(ind)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+              className={`px-4 py-2 rounded-full text-sm font-semibold transition-colors ${
                 selectedIndustry === ind
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-600 border border-gray-200 hover:border-blue-300'
+                  ? 'bg-purple-700 text-white'
+                  : 'bg-white text-gray-600 border border-gray-200 hover:border-purple-300 hover:text-purple-700'
               }`}
             >
               {ind}
@@ -100,12 +95,12 @@ export default function CompaniesPage() {
         </div>
 
         <p className="text-gray-500 mb-6">
-          <span className="font-semibold text-gray-900">{total}</span> companies found
+          <span className="font-bold text-gray-900">{total}</span> companies found
         </p>
 
         {isLoading ? (
           <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+            <Loader2 className="w-8 h-8 animate-spin text-purple-700" />
           </div>
         ) : companies.length === 0 ? (
           <div className="text-center py-20">
@@ -117,40 +112,27 @@ export default function CompaniesPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {companies.map((company) => (
               <Link key={company._id} href={`/companies/${company.slug}`}>
-                <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md hover:border-blue-100 transition-all duration-200 cursor-pointer h-full">
-                  {/* Logo */}
+                <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-md hover:border-purple-200 transition-all duration-200 cursor-pointer h-full">
                   <div className="flex items-start justify-between mb-4">
-                    <div className="w-16 h-16 bg-gray-100 rounded-xl flex items-center justify-center">
+                    <div className="w-16 h-16 bg-purple-50 rounded-xl flex items-center justify-center">
                       {company.logo ? (
-                        <img
-                          src={company.logo}
-                          alt={company.name}
-                          className="w-full h-full object-cover rounded-xl"
-                        />
+                        <img src={company.logo} alt={company.name} className="w-full h-full object-cover rounded-xl" />
                       ) : (
-                        <Building2 className="w-8 h-8 text-gray-400" />
+                        <Building2 className="w-8 h-8 text-purple-400" />
                       )}
                     </div>
-                    {company.isVerified && (
-                      <span className="flex items-center gap-1 text-blue-600 text-xs font-medium">
+                    {company.isVerified ? (
+                      <span className="flex items-center gap-1 text-purple-700 text-xs font-semibold bg-purple-50 px-2 py-1 rounded-full border border-purple-100">
                         <CheckCircle className="w-3.5 h-3.5" /> Verified
                       </span>
-                    )}
+                    ) : null}
                   </div>
-
-                  <h3 className="font-bold text-gray-900 text-lg mb-1 hover:text-blue-600 transition-colors">
-                    {company.name}
-                  </h3>
-                  <p className="text-blue-600 text-sm font-medium mb-3">{company.industry}</p>
+                  <h3 className="font-bold text-gray-900 text-lg mb-1 hover:text-purple-700 transition-colors">{company.name}</h3>
+                  <p className="text-purple-700 text-sm font-semibold mb-3">{company.industry}</p>
                   <p className="text-gray-500 text-sm mb-4 line-clamp-2">{company.description}</p>
-
                   <div className="flex flex-wrap gap-3 text-xs text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5" /> {company.location}
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <Users className="w-3.5 h-3.5" /> {company.size} employees
-                    </span>
+                    <span className="flex items-center gap-1"><MapPin className="w-3.5 h-3.5" /> {company.location}</span>
+                    <span className="flex items-center gap-1"><Users className="w-3.5 h-3.5" /> {company.size} employees</span>
                   </div>
                 </div>
               </Link>

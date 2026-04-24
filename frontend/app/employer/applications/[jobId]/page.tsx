@@ -87,7 +87,7 @@ export default function JobApplicationsPage() {
   if (authLoading || isLoading) {
     return (
       <div className="min-h-screen bg-gray-50 pt-16 flex items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-purple-700" />
       </div>
     );
   }
@@ -154,7 +154,7 @@ export default function JobApplicationsPage() {
                       <div className="flex items-start justify-between gap-3">
                         <div className="flex items-center gap-3">
                           <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center shrink-0">
-                            <span className="text-blue-600 font-semibold text-sm">
+                            <span className="text-purple-700 font-semibold text-sm">
                               {applicant?.firstName?.[0]}{applicant?.lastName?.[0]}
                             </span>
                           </div>
@@ -203,7 +203,7 @@ export default function JobApplicationsPage() {
                       <div className="flex items-start justify-between mb-6">
                         <div className="flex items-center gap-4">
                           <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                            <span className="text-blue-600 font-bold text-xl">
+                            <span className="text-purple-700 font-bold text-xl">
                               {applicant?.firstName?.[0]}{applicant?.lastName?.[0]}
                             </span>
                           </div>
@@ -242,7 +242,7 @@ export default function JobApplicationsPage() {
                           </div>
                         )}
                         {applicant?.resumeUrl ? (
-                          <a href={applicant.resumeUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-blue-600 hover:text-blue-700">
+                          <a href={applicant.resumeUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-purple-700 hover:text-blue-700">
                             <ExternalLink className="w-4 h-4" />
                             View Resume
                           </a>
